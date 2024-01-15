@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "hello-world-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/helloWorld/HelloWorldWebPart.js",
+          "manifest": "./src/webparts/helloWorld/HelloWorldWebPart.manifest.json"
+        }
+      ]
+    },
+    "member-bar-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/memberBar/MemberBarWebPart.js",
+          "manifest": "./src/webparts/memberBar/MemberBarWebPart.manifest.json"
+        }
+      ]
+    },
+    "document-feedback-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/documentFeedback/DocumentFeedbackWebPart.js",
+          "manifest": "./src/webparts/documentFeedback/DocumentFeedbackWebPart.manifest.json"
+        }
+      ]
+    },
+    "top-bar-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/topBar/TopBarWebPart.js",
+          "manifest": "./src/webparts/topBar/TopBarWebPart.manifest.json"
+        }
+      ]
+    },
+    "footer-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/footer/FooterWebPart.js",
+          "manifest": "./src/webparts/footer/FooterWebPart.manifest.json"
+        }
+      ]
+    },
+    "home-container-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/homeContainer/HomeContainerWebPart.js",
+          "manifest": "./src/webparts/homeContainer/HomeContainerWebPart.manifest.json"
+        }
+      ]
+    },
+    "top-bar-members-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/topBarMembers/TopBarMembersWebPart.js",
+          "manifest": "./src/webparts/topBarMembers/TopBarMembersWebPart.manifest.json"
+        }
+      ]
+    },
+    "tbd-container-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/tbdContainer/TbdContainerWebPart.js",
+          "manifest": "./src/webparts/tbdContainer/TbdContainerWebPart.manifest.json"
+        }
+      ]
+    },
+    "explore-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/explore/ExploreWebPart.js",
+          "manifest": "./src/webparts/explore/ExploreWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
+    "MemberBarWebPartStrings": "lib/webparts/memberBar/loc/{locale}.js",
+    "DocumentFeedbackWebPartStrings": "lib/webparts/documentFeedback/loc/{locale}.js",
+    "TopBarWebPartStrings": "lib/webparts/topBar/loc/{locale}.js",
+    "FooterWebPartStrings": "lib/webparts/footer/loc/{locale}.js",
+    "HomeContainerWebPartStrings": "lib/webparts/homeContainer/loc/{locale}.js",
+    "TopBarMembersWebPartStrings": "lib/webparts/topBarMembers/loc/{locale}.js",
+    "TbdContainerWebPartStrings": "lib/webparts/tbdContainer/loc/{locale}.js",
+    "ExploreWebPartStrings": "lib/webparts/explore/loc/{locale}.js"
+  }
+}
