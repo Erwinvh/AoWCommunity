@@ -4,10 +4,13 @@
 }
 
 .writinggrid {
-  display: grid;
-  grid-template-columns: 6fr 4fr;
-  height: 100%;
-  gap: 5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 90%;
+  margin-bottom: 20%;
+  float:left;
+  // gap: 5%;
   width: 95%;
 }
 
@@ -16,13 +19,8 @@
 }
 
 .writingmain {
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
   width: 100%;
-  height: 90%;
+  height: 100%;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -32,8 +30,6 @@
 
 .writingdesc {
   border-bottom: #000 solid;
-  padding: 2%;
-  margin: 2%
 }
 
 .feedbackbutton {
@@ -71,7 +67,7 @@
   border-top: rgb(236, 203, 11) solid;
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
-  padding-top: 5%;
+  padding-top: 2%;
 }
 
 .feecdbackquestions {
@@ -79,28 +75,23 @@
 }
 
 .CommentContainer{
+  display: relative;
   border-left: #000 solid;
-  height: 80%;
-  max-height: 80%;
-  min-height: 80%;
-}
-
-.CommentGrid{
-  display: grid; 
-  grid-template-rows: 1fr 6fr 2fr;
-  height: 100%;
-  max-height: 100%;
-  min-height: 100%;
-  overflow-y: scroll;
+  overflow-y: hidden;
+  height: 80vh;
+  margin-left: 1%;
 }
 
 .AnswerArea {
-  width: 100%;
-  max-height: 100%;
-  min-height: 100%;
-  height: 100%;
-//  overflow-y: scroll;
+height: 70%;
+  overflow-y: scroll;
   overflow-x: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.AnswerArea::-webkit-scrollbar {
+  display: none;
 }
 
 .Answer {
@@ -129,9 +120,7 @@
 
 .content {
   padding: 0 18px;
-  display: none;
   overflow: hidden;
-  height: 60%;
   background-color: #f1f1f1;
 }
 
@@ -146,3 +135,9 @@
 .activedropdown:after {
   content: "\2191";
 }
+
+.FeedbackArea{
+  float: right;
+  width: 40%;
+}
+
