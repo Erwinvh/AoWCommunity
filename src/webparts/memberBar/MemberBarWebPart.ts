@@ -16,8 +16,8 @@ export default class MemberBarWebPart extends BaseClientSideWebPart<IMemberBarWe
     <li><a href="myfeedback.html"><img draggable="false" src="${require('../../shared/assets/chat.png')}" alt="Chat overview"><br>My chats</a></li>
     <li><a href="following.html"><img draggable="false" src="${require('../../shared/assets/following.png')}" alt="Follwoed writers overview"><br>Followed writers</a></li>
     <li><a href="mynotifications.html"><img draggable="false" src="${require('../../shared/assets/notification.png')}" alt="nitifications overview"><br>Notifications</a></li>
-    <li><a href="myteams.html"><img draggable="false" src="${require('../../shared/assets/team.png')}" alt="Joined teams overview"><br>Teams</a></li>
-    <li><a href="material.html"><img draggable="false" src="${require('../../shared/assets/material.png')}" alt="Writing materials overview"><br>Writing material</a></li>
+    <li><a href="myteams.html"><img draggable="false" src="${require('../../shared/assets/team.png')}" alt="Joined teams overview"><br>Groups</a></li>
+    <li><a href="material.html"><img draggable="false" src="${require('../../shared/assets/material.png')}" alt="Writing materials overview"><br>Source material</a></li>
     <li><a href="forums.html"><img draggable="false" src="${require('../../shared/assets/forum.png')}" alt="Forum"><br>Forum</a></li>
 
   </ul>

@@ -17,7 +17,7 @@ export interface IHomeContainerWebPartProps {
 
 export default class HomeContainerWebPart extends BaseClientSideWebPart<IHomeContainerWebPartProps> {
   public render(): void {
-    this.domElement.innerHTML = `<div class="${ styles.homeContainer, styles.maincontainer}">
+    this.domElement.innerHTML = `<div class="${styles.homeContainer} ${styles.maincontainer}">
     
     <h1 style="text-align: center;">  ${escape(this.properties.title)}</h1>
 

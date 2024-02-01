@@ -59,7 +59,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
       .then((response: SPHttpClientResponse) => {
         return response.json();
       })
-      .catch(() => {});
+      .catch((e) => {console.log(e)});
   }
 
   private _renderList(items: ISPList[]): void {
@@ -73,7 +73,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
     </ul>`;
     });
   
-    if(this.domElement.querySelector('#spListContainer') != null) {
+    if(this.domElement.querySelector('#spListContainer') !== null) {
       this.domElement.querySelector('#spListContainer')!.innerHTML = html;
     }
   }
@@ -83,7 +83,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
       .then((response) => {
         this._renderList(response.value);
       })
-      .catch(() => {});
+      .catch((e) => {console.log(e)});
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {

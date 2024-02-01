@@ -1,4 +1,3 @@
-
 import styles from './DocumentFeedbackWebPart.module.scss';
 
 export default class HTMLRenderer{
@@ -9,6 +8,7 @@ html+=`
 <div id="WritingOverviewContainer" style="display:none;">
 <div id="WritingContainer" class="${styles.writinggrid}">
     <div class="${styles.writingtitle}">
+        <button id="DocumentBackButton" class="${styles.backButtons}">Back</button>
         <h1 id="TitleContainer">Writing title</h1>
     </div>
 `+this.renderDocumentContainer()+
@@ -25,9 +25,9 @@ html+=`
 }
 
 private renderFormal():string{
-    let html : string = `<div id="FormalContainer" class="${styles.CommentContainer}" style="display:none;"> 
+    const html : string = `<div id="FormalContainer" class="${styles.CommentContainer}" style="display:none;"> 
     <div id="Formaltitle">
-    <h2 style="text-align: center;">Formal feedback:</h2>
+    <h2 style="text-align: center;">Formal feedback</h2>
     </div>
     <div class="${styles.AnswerArea}">
         <button type="button" class="${styles.collapsible}" style="background-color: #e4341c;"
@@ -82,20 +82,20 @@ private renderFormal():string{
         <div id="InputContent" class="${styles.content}" style="display: none;">
             <div style=" width: 100%;">
                 <div >
-                    <p>My tops:</p>
-                    <textarea id="TopsInputField" type="text" style="margin-left: 5%;"></textarea>
+                    <p>My tops</p>
+                    <textarea id="TopsInputField" type="text" style="max-width:80%; width:80%; min-width:80%; margin-left: 5%;"></textarea>
                 </div>
                 <div>
-                    <p>My tips:</p>
-                    <textarea id="TipsInputField" type="text" style="margin-left: 5%;"></textarea>
+                    <p>My tips</p>
+                    <textarea id="TipsInputField" type="text" style="max-width:80%; width:80%; min-width:80%; margin-left: 5%;"></textarea>
                 </div>
                 <div>
-                    <p>My nitpicks:</p>
-                    <textarea id="NitpicksInputField" type="text" style="margin-left: 5%;"></textarea>
+                    <p>My nitpicks</p>
+                    <textarea id="NitpicksInputField" type="text" style="max-width:80%; width:80%; min-width:80%; margin-left: 5%;"></textarea>
                 </div>
                 <div>
-                    <p>My general impression:</p>
-                    <textarea id="GeneralInputField" type="text" style="margin-left: 5%;"></textarea>
+                    <p>My general impression</p>
+                    <textarea id="GeneralInputField" type="text" style="max-width:80%; width:80%; min-width:80%; margin-left: 5%;"></textarea>
                 </div>
             </div>
             <button id="FormalInputSend" style="float: right; margin-right: 10%;">
@@ -109,36 +109,21 @@ private renderFormal():string{
 }
 
 private renderQuestions():string{
-    let html: string = `
+    const html: string = `
     <div id="QuestionsContainer" class="${styles.CommentContainer}" style="display:none;"> 
       <div id="Questionstitle">
-          <h2 style="text-align: center;">Feedback questions:</h2>
+          <h2 style="text-align: center;">Feedback questions</h2>
       </div>
 
       <div id="QAContainer" class="${styles.AnswerArea}">
-
-        <button type="button" class="${styles.collapsible}" style="background-color: #e4341c;"
-          onclick"
-          if(document.getElementById('QuestionTest').style.display == 'none'){
-            document.getElementById('QuestionTest').style.display = 'block';
-          }else{
-            document.getElementById('QuestionTest').style.display = 'none';
-          }">Question 3</button>
-        <div id="QuestionTest" class="${styles.content}" style=" display:none;">
-          <div class="${styles.Answer}">
-            <p>My answer:</p>
-            <textarea type="text" style="margin-left: 5%;"></textarea>
-            <button style="float: right; margin-right: 10%;"><h1>></h1></button>
-          </div>
-        </div>
-          </div>`;
+      </div>`;
     return html;
 }
 
 private renderInline():string{
-    let html : string = `<div id="InlineContainer" style="display:none;"> 
+    const html : string = `<div id="InlineContainer" style="display:none;"> 
       <div id="Inlinetitle">
-        <h2 style="text-align: center;">Inline feedback:</h2>
+        <h2 style="text-align: center;">Inline feedback</h2>
       </div>
       <p>To Be Developed</p>
     </div>`;
@@ -147,7 +132,7 @@ private renderInline():string{
 }
 
 private renderDocumentContainer(): string{
-    let html : string = `<div class="${styles.writingmain}">
+    const html : string = `<div class="${styles.writingmain}">
       <div id="DescContainer" class="${styles.writingdesc}"> Wrting description/summary/intro/author notes/written trigger warning</div>
       <div id="Documentcontainer" style="height: auto;">
         <pre style="margin: 5%; white-space: pre-line;">
@@ -175,17 +160,20 @@ private renderDocumentContainer(): string{
         </pre>
       </div>
       <div class="${styles.relatedwritinggrid}">
-        <div>
-          <h3>Previous chapter/work:</h3>
-          <a href="writingview.html">Previous chapter name</a>
+        <div>`
+        //TODO: have this link to the previous chapter
+        +`<h3>Previous chapter/work</h3>
+          Previous chapter name (TBD)
         </div>
-        <div>
-          <h3>Collection:</h3>
-          <a href="explore collection.html">Collection name</a>
+        <div>`
+        //TODO: have this link to the Collection
+        +`<h3>Collection</h3>
+          <a>Collection name</a>
         </div>
-        <div>
-          <h3>Next chapter/work:</h3>
-          <a href="writingview.html">Next chapter name</a>
+        <div>`
+        //TODO: have this link to the next chapter
+        +`<h3>Next chapter/work</h3>
+          Next chapter name (TBD)
         </div>
       </div>
 </div>
@@ -195,17 +183,17 @@ private renderDocumentContainer(): string{
 }
 
 private renderComments():string{
-    let html:string = `  
+    const html:string = `  
 <div id="CommentsContainer" class="${styles.CommentContainer}" style="display:none;"> 
 <div id="commentstitle">
-  <h2 style="text-align: center;">Comments:</h2>
+  <h2 style="text-align: center;">Comments</h2>
 </div>
 <div id="CommentsArea" class="${styles.AnswerArea}">
     
 </div>
 <div id="CommentsInput">
   <br>
-  <textarea id="CommentsInputField">
+  <textarea id="CommentsInputField" style="max-width:80%; width:80%; min-width:80%;">
   </textarea>
   <button id="CommentsInputSend" onclick="addCommentItem();">Send</button>
 </div>
@@ -214,8 +202,7 @@ return html;
 }
 
 private renderFeedbackButtons():string{
-    let html:string = ``;
-    html+=`<div class="${styles.feedbackbuttons}">
+    const html:string = `<div class="${styles.feedbackbuttons}">
 
       <div id="QuestionsButton" class="${styles.feedbackbutton}" 
         onclick="
@@ -365,10 +352,8 @@ WritingContainer
     return html;
     }
 
-
-
 public renderExploreContainer():string{
-    let html: string = `
+    const html: string = `
         <div id = "ExploreContainer" class="${styles.gridcontainer}" style="display:grid;">`
           +this.renderSortBar()
           +this.renderFilterContainer()
@@ -382,20 +367,18 @@ public renderExploreContainer():string{
 }
 
 private renderExploreOverviewContainer():string{
-    let html: string = `
+    const html: string = `
     <div id="WritingListContainer" class="${styles.exploreContainer} ">
-    </div>
-    `;
-
+    </div>`;
     return html;
 }
 
 private renderSortBar(): string{
-    let html: string = `
+    const html: string = `
     <div class="${styles.item1}">
     <p style="margin :0% 2%; float: left;">Writers in town </p>
       <div style="float: left;">
-        <label for="cars">Sort by: </label>
+        <label for="cars">Sort by </label>
         <select id="cars" name="cars">
           <option value="volvo">Newest</option>
           <option value="saab">Oldest</option>
@@ -405,64 +388,102 @@ private renderSortBar(): string{
           <option value="audi">Least feedbacked</option>
         </select>
       </div>
-      <div class="${styles.searchcontainer}" style="float: right;">
+      <div class="${styles.searchContainer}" style="float: right;">
         <form action="/action_page.php">
           <input type="text" placeholder="Search.." name="search">
         </form>
       </div>
-
-    </div>
-    `;
-
+    </div>`;
     return html;
 }
 
 private renderFilterContainer():string{
-    let html: string = `
-    <div class="${styles.item2, styles.filtercontainer}">
-
-      <h3>Filters:</h3>
-
-      <h4>Writing type:</h4>
-      <p id="Debugger"></p>
-      <form class="${styles.filter}">
-        <input type="checkbox" id="Type1" name="Type1" value="Fiction">
-        <label for="Type1">Fiction <img src="${require('../../shared/assets/fiction.png')}" style="height: 10%; width: 10%;"></label><br>
-        <input type="checkbox" id="Type2" name="Type2" value="Non-fiction">
-        <label for="Type2">Non-fiction <img src="${require('../../shared/assets/nonfiction.png')}"
-            style="height: 10%; width: 10%;"></label><br>
-        <input type="checkbox" id="Type3" name="Type3" value="Poetry">
-        <label for="Type3">Poetry <img src="${require('../../shared/assets/poetry.png')}" style="height: 10%; width: 10%;"></label><br>
-        <input type="checkbox" id="Type4" name="Tytpe4" value="Script">
-        <label for="Type4">Scripts <img src="${require('../../shared/assets/script.png')}" style="height: 10%; width: 10%;"></label><br>
-        <input type="checkbox" id="Type5" name="Type5" value="Other">
-        <label for="Type5">Other <img src="${require('../../shared/assets/otherwriting.png')}" style="height: 10%; width: 10%;"></label>
-      </form>
-
-      <h4>Writing stage:</h4>
-      <form class="${styles.filter}">
-        <input type="checkbox" id="Type1" name="Type1" value="Fiction">
-        <label for="Type1">First draft</label><br>
-        <input type="checkbox" id="Type2" name="Type2" value="Non-fiction">
-        <label for="Type2">Review version</label><br>
-        <input type="checkbox" id="Type3" name="Type3" value="Poetry">
-        <label for="Type3">Finished/final</label><br>
-      </form>
-      <div id="GenreListContainer">
-      </div>
-        <div id="TagListContainer">
+    const html: string = `
+    <div class="${styles.item2} ${styles.filtercontainer}">
+      <h5>Filters</h5>
+      
+      <button type="button" class="${styles.collapsible}" style="background-color: #807d7d;"
+          onclick="
+          if(document.getElementById('WritingTypeCollapsable').style.display == 'none'){
+            document.getElementById('WritingTypeCollapsable').style.display = 'block';
+          }else{
+            document.getElementById('WritingTypeCollapsable').style.display = 'none';
+          }"><h6>Writing type</h6></button>
+        <div id="WritingTypeCollapsable" class="${styles.content}" style=" display:none;">
+          <form class="${styles.filter}">
+            <input type="checkbox" id="Type1" name="Type1" value="Fiction">
+            <label for="Type1">Fiction <img src="${require('../../shared/assets/fiction.png')}" style="height: 10%; width: 10%;"></label><br>
+            <input type="checkbox" id="Type2" name="Type2" value="Non-fiction">
+            <label for="Type2">Non-fiction <img src="${require('../../shared/assets/nonfiction.png')}"
+                style="height: 10%; width: 10%;"></label><br>
+            <input type="checkbox" id="Type3" name="Type3" value="Poetry">
+            <label for="Type3">Poetry <img src="${require('../../shared/assets/poetry.png')}" style="height: 10%; width: 10%;"></label><br>
+            <input type="checkbox" id="Type4" name="Tytpe4" value="Script">
+            <label for="Type4">Scripts <img src="${require('../../shared/assets/script.png')}" style="height: 10%; width: 10%;"></label><br>
+            <input type="checkbox" id="Type5" name="Type5" value="Other">
+            <label for="Type5">Other <img src="${require('../../shared/assets/otherwriting.png')}" style="height: 10%; width: 10%;"></label>
+          </form>
         </div>
-        <div id="TriggerListContainer">
-        </div>
-        
+      <button type="button" class="${styles.collapsible}" style="background-color: #807d7d;"
+        onclick="
+        if(document.getElementById('WritingStateCollapsable').style.display == 'none'){
+          document.getElementById('WritingStateCollapsable').style.display = 'block';
+        }else{
+          document.getElementById('WritingStateCollapsable').style.display = 'none';
+        }"><h6>Writing stage</h6></button>
+      <div id="WritingStateCollapsable" class="${styles.content}" style=" display:none;">
+        <form class="${styles.filter}">
+          <input type="checkbox" id="Type1" name="Type1" value="Fiction">
+          <label for="Type1">First draft</label><br>
+          <input type="checkbox" id="Type2" name="Type2" value="Non-fiction">
+          <label for="Type2">Review version</label><br>
+          <input type="checkbox" id="Type3" name="Type3" value="Poetry">
+          <label for="Type3">Finished/final</label><br>
+        </form>
       </div>
-    `;
 
+      <button type="button" class="${styles.collapsible}" style="background-color: #807d7d;"
+      onclick="
+      if(document.getElementById('WritingGenreCollapsable').style.display == 'none'){
+        document.getElementById('WritingGenreCollapsable').style.display = 'block';
+      }else{
+        document.getElementById('WritingGenreCollapsable').style.display = 'none';
+      }"><h6>Genres</h6></button>
+    <div id="WritingGenreCollapsable" class="${styles.content}" style=" display:none;">
+      <form id="GenreListContainer" class="${styles.filter}">
+      </form>
+    </div>
+      
+    <button type="button" class="${styles.collapsible}" style="background-color: #807d7d;"
+    onclick="
+    if(document.getElementById('WritingTagCollapsable').style.display == 'none'){
+      document.getElementById('WritingTagCollapsable').style.display = 'block';
+    }else{
+      document.getElementById('WritingTagCollapsable').style.display = 'none';
+    }"><h6>Tags</h6></button>
+  <div id="WritingTagCollapsable" class="${styles.content}" style=" display:none;">
+    <form id="TagListContainer" class="${styles.filter}">
+    </form>
+  </div>
+
+  <button type="button" class="${styles.collapsible}" style="background-color: #807d7d;"
+  onclick="
+  if(document.getElementById('WritingTriggerCollapsable').style.display == 'none'){
+    document.getElementById('WritingTriggerCollapsable').style.display = 'block';
+  }else{
+    document.getElementById('WritingTriggerCollapsable').style.display = 'none';
+  }"><h6>Included Trigger</h6></button>
+  <div id="WritingTriggerCollapsable" class="${styles.content}" style=" display:none;">
+    <form id="TriggerListContainer" class="${styles.filter}">
+    </form>
+  </div>
+  <div style="height:40%"></div>
+      </div>`;
     return html;
 }
 
 private renderDetailContainer():string{
-    let html: string = `
+    const html: string = `
     <div id="DetailMenu" class="${styles.detailcontainer}" style="height: 0%; font-size: 16px;">
         <button id="DetailsCloseButton"
             class="detailscloseButton" style="display: none;" onclick="
@@ -472,34 +493,146 @@ private renderDetailContainer():string{
         ">X</button>
         <div id="DetailMenuInfo" class="${styles.detailcontainerInfo}">
         </div>
-    </div>
-    `;
-return html;
-}
-
-
-
-
-public renderMemberBar():string{
-  let html: string = `
-  <div>
-  
-  <ul class="${styles.memberBar}">
-  <li><a class="${styles.active}" href="explore.html"><img draggable="false" src="${require('../../shared/assets/explore.png')}" alt="Explore writing function"><br>Writers in town</a></li>
-  <li><a href="mywriting.html"><img draggable="false" src="${require('../../shared/assets/writing.png')}" alt="Owned writing overview"><br>My writing</a></li>
-  <li><a href="myfeedback.html"><img draggable="false" src="${require('../../shared/assets/chat.png')}" alt="Chat overview"><br>My chats</a></li>
-  <li><a href="following.html"><img draggable="false" src="${require('../../shared/assets/following.png')}" alt="Follwoed writers overview"><br>Followed writers</a></li>
-  <li><a href="mynotifications.html"><img draggable="false" src="${require('../../shared/assets/notification.png')}" alt="nitifications overview"><br>Notifications</a></li>
-  <li><a href="myteams.html"><img draggable="false" src="${require('../../shared/assets/team.png')}" alt="Joined teams overview"><br>Teams</a></li>
-  <li><a href="material.html"><img draggable="false" src="${require('../../shared/assets/material.png')}" alt="Writing materials overview"><br>Writing material</a></li>
-  <li><a href="forums.html"><img draggable="false" src="${require('../../shared/assets/forum.png')}" alt="Forum"><br>Forum</a></li>
-
-</ul>
-  
-  </div>
-  `;
-
+    </div>`;
   return html;
 }
+
+public RenderWritingpieceOverview(Type: string):string{
+  const html: string = `
+  <div id="`+Type+`Overview" style="display:none;">
+  <button id="`+Type+`BackButton" class="${styles.backButtons}">Back</button>
+      <h1 id="`+Type+`TitleField" style="text-align: center;">Title collection piece work</h1>
+      <div class="${styles.topgrid}">
+          <div class="${styles.uppergrid}">
+              <div class="${styles.lowergrid}">
+                  <div class="${styles.descriptionitem}">`
+                      +this.RenderDescription(Type)
+                  +`</div>`
+                  +this.RenderSubDivisionTable(Type)
+              +`</div>
+              <div>`
+                  +this.RenderBaseStatTable(Type)
+                  +this.RenderTriggersList(Type)
+                  +this.RenderTagsList(Type)
+              +`</div>
+          </div>`
+          +this.RenderLatestButton(Type)
+      +`</div>
+  </div>`
+  return html;
+}
+private RenderDescription(Type: string):string {
+  const html:string = `
+      <h3>Description</h3>
+      <pre id="`+Type+`OverviewDesc" style="text-align: center; white-space: pre-line; height: fit-content;">
+          Lorem ipsum dolor sit amet, 
+          consectetur adipiscing elit, 
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+
+          Ut enim ad minim veniam, 
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+          Excepteur sint occaecat cupidatat non proident, 
+          sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </pre>
+  `;
+  return html;
+}
+private RenderLatestButton(Type: string):string {
+  let html:string = ``;
+  if(Type === "Collection"){
+      html+=`    
+      <button id="latestSingleRedirectButton" data-Latest="NA">
+      Go to latest version &rarr;
+      </button>`
+  }else{
+      html+=`    
+      <button id="latestVersionRedirectButton">
+      Go to latest version &rarr;
+      </button>`
+  }
+  return html;
+}
+
+private RenderSubDivisionTable(Type: string): string{
+  const html:string = `
+  <div class="${styles.descriptionitem}">
+      <h3 id="`+Type+`SubdivisionTitle">Chapters/components</h3>
+      <table id="`+Type+`SubdivisionTable">
+          <tr>
+              <th>Chapter/component</th>
+              <th>Date</th>
+              <th>Link</th>
+          </tr>
+      </table>
+  </div>`;
+  return html;
+}
+
+private RenderBaseStatTable(Type: string):string{
+  const html: string = `
+  <h3>Base statistics</h3>
+              <table>
+                  <tr>
+                      <th>Statistic</th>
+                      <th>Value</th>
+                  </tr>
+                  <tr>
+                      <td>Author(s)</td>
+                      <td id="`+Type+`OwnerField">100</td>
+                  </tr>
+                  <tr>
+                      <td>Views</td>
+                      <td id="`+Type+`ViewField">100</td>
+                  </tr>
+                  <tr>
+                      <td>Feedbackers</td>
+                      <td id="`+Type+`FeedbackersField">5</td>
+                  </tr>
+                  <tr>
+                      <td>Likes</td>
+                      <td>NA</td>
+                  </tr>
+                  <tr>
+                      <td>First version release date</td>
+                      <td id="`+Type+`FirstVersionDateField">2 months ago</td>
+                  </tr>
+                  <tr>
+                      <td>Newest version release date</td>
+                      <td id="`+Type+`LastUpdateField">Today</td>
+                  </tr>
+                  <tr>
+                      <td>Type</td>
+                      <td>`+Type+`</td>
+                  </tr>
+                  <tr>
+                      <td>Genre</td>
+                      <td id="`+Type+`GenreField">Test document</td>
+                  </tr>
+              </table>`;
+  return html;
+}
+
+private RenderTagsList(Type: string): string{
+  const html:string = `
+  <h3>Tags</h3>
+  <ul>
+      <li id="`+Type+`TagsField">Tag1</li>
+  </ul>
+  `;
+  return html;
+}
+
+private RenderTriggersList(Type: string): string{
+  const html:string = `
+  <h3>Content triggers</h3>
+  <ul>
+      <li id="`+Type+`TriggersField">Tigger1</li>
+  </ul>
+  `;
+  return html;
+}
+
+
 
 }

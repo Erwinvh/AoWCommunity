@@ -100,7 +100,7 @@ export default class ExploreWebPart extends BaseClientSideWebPart<IExploreWebPar
       </div>
 
     </div>
-    <div class="${styles.item2, styles.filtercontainer}">
+    <div class="${styles.item2} ${styles.filtercontainer}">
 
       <h3>Filters:</h3>
 
@@ -141,21 +141,6 @@ export default class ExploreWebPart extends BaseClientSideWebPart<IExploreWebPar
         <div id="WritingListContainer" class="${styles.exploreContainer} ">
         </div>
         <div id="DetailMenu" class="${styles.detailcontainer}" style="height: 0%; font-size: 16px;">
-`/*
-  <p>Details:</p>
-  <div class="${styles.detailcontainer}">
-    <div id:"BaseInfo" class="${styles.detailitem}">
-
-  
-    </div>
-    <div id:"statistics" class="${styles.detailitem}">
-    </div>
-    <div id:"TnT" class="${styles.detailitem}">
-
-    </div>
-
-
-        </div>*/+`
       </div>
     </div>
   <button id="DetailsCloseButton"
@@ -168,8 +153,6 @@ export default class ExploreWebPart extends BaseClientSideWebPart<IExploreWebPar
     `;
     this._renderAllFilters();
     this._renderWritingsAsync();
-
-
   }
 
 
@@ -180,140 +163,26 @@ export default class ExploreWebPart extends BaseClientSideWebPart<IExploreWebPar
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
-/*
-private _renderDetailsAsync(WritingID: string){
-        this._getDetailsData(id)
-      .then((response) => {
-        this._renderDetails(response.value);
-      })
-      .catch(() => { });
 
-}
-*/
-private handleClick(event:MouseEvent){
-  if(event.target != null){
+private handleClick(event:MouseEvent):void{
+  if(event.target !== null){
     const div = (event.target as HTMLElement).closest('button');
-    if(div!=null){
-      let id = div?.getAttribute("data-ID");
-      if(id!= null){
+    if(div!==null){
+      const id = div?.getAttribute("data-ID");
+      if(id!== null){
         console.log(id + " : ID!");
-        //this._renderDetailsAsync(id);
-  /*if (
-    this.domElement.querySelector('#BaseInfo') != null) {
-    this.domElement.querySelector('#BaseInfo')!.innerHTML = html;
-  };*/
-   // let Divhtml = document.getElementById('#BaseInfo');
-  //  if(Divhtml) Divhtml.innerHTML = html;
-  //document.getElementById('BaseInfo')?.innerHTML;
-        //this._renderBruteDetails();
+
     }
     }
   }
-
-
-}
-/*
-private _getDetailsData(WritingID :string):Promise<IWritingList>{
-  return this.context.spHttpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/GetByTitle('Writings')/items?$filter=(Title Eq `+WritingID+`) $select=Attachments,AttachmentFiles,*&$expand=AttachmentFiles`, SPHttpClient.configurations.v1)
-  .then((response: SPHttpClientResponse) => {
-    return response.json();
-  })
-  .catch(() => { return });
 }
 
-private _renderBruteDetails():void{
-  let html = '<p style="font-weight: bolder;">Base information</p>';
-  html+=`<p>Title: </p>
-  <p>Author: </p>
-  <p>post-date: </p>
-  <p>writing type: </p>
-  <p>genres: </p>
-  <ul>
-    <li></li>
-    <li>TODO:list the genres dynamically</li>
-  </ul>
-  <p>state: </p>
-`;
-  if (this.domElement.querySelector('#BaseInfo') != null) {
-    this.domElement.querySelector('#BaseInfo')!.innerHTML = html;
-  };
-  html = `<p style="font-weight: bolder;">Statistics</p>`;
-  html+=`      
-  <p>Views: </p>
-  <p>Feedback given: </p>
-`;
-  if (this.domElement.querySelector('#statistics') != null) {
-    this.domElement.querySelector('#statistics')!.innerHTML = html;
-  };
-  html = `<p style="font-weight: bolder;">Tags & triggers</p>
-  <p style="font-weight: bolder;">Tags</p>`;
-  html+=`      
-  <ul>
-    <li></li>
-    <li>TODO:list the tags dynamically</li>
-  </ul>
-  <p style="font-weight: bolder;">Triggers</p>
-  <ul>
-    <li></li>
-    <li>TODO:list the triggers dynamically</li>
-    <li>Tigger3</li>
-  </ul>
-`;
-  if (this.domElement.querySelector('#TnT') != null) {
-    this.domElement.querySelector('#TnT')!.innerHTML = html;
-  };
-}
-
-private _renderDetails(items: IWritingListItem[]):void{
-  var item = items[0];
-  let html = '<p style="font-weight: bolder;">Base information</p>';
-  html+=`<p>Title: ${item.Writingtitle}</p>
-  <p>Author: ${item.Owner}</p>
-  <p>post-date: ${item.First_placed}</p>
-  <p>writing type: ${item.Writingtype}</p>
-  <p>genres: </p>
-  <ul>
-    <li>${item.Genres}</li>
-    <li>TODO:list the genres dynamically</li>
-  </ul>
-  <p>state: ${item.Writingstate}</p>
-`;
-  if (this.domElement.querySelector('#BaseInfo') != null) {
-    this.domElement.querySelector('#BaseInfo')!.innerHTML = html;
-  };
-  html = `<p style="font-weight: bolder;">Statistics</p>`;
-  html+=`      
-  <p>Views: ${item.Views}</p>
-  <p>Feedback given: ${item.Feedback_received}</p>
-`;
-  if (this.domElement.querySelector('#statistics') != null) {
-    this.domElement.querySelector('#statistics')!.innerHTML = html;
-  };
-  html = `<p style="font-weight: bolder;">Tags & triggers</p>
-  <p style="font-weight: bolder;">Tags</p>`;
-  html+=`      
-  <ul>
-    <li>${item.Tags}</li>
-    <li>TODO:list the tags dynamically</li>
-  </ul>
-  <p style="font-weight: bolder;">Triggers</p>
-  <ul>
-    <li>${item.Triggers}</li>
-    <li>TODO:list the triggers dynamically</li>
-    <li>Tigger3</li>
-  </ul>
-`;
-  if (this.domElement.querySelector('#TnT') != null) {
-    this.domElement.querySelector('#TnT')!.innerHTML = html;
-  };
-}
-*/
-  private _renderWritingsAsync() {
+  private _renderWritingsAsync():void {
     this._getWritingsListdata()
       .then((response) => {
         this._renderWritingsList(response.value);
       })
-      .catch(() => { });
+      .catch((e)=>{console.log(e)})
   }
 
   private _getWritingsListdata(): Promise<IWritingList> {
@@ -327,7 +196,7 @@ private _renderDetails(items: IWritingListItem[]):void{
     let html: string = '';
     this.writingItems = items;
     items.forEach((item: IWritingListItem) => {
-      if (item.Visibility == "Public") {
+      if (item.Visibility === "Public") {
         switch (item.Writingtype) {
           case "Fiction":
             html += `
@@ -358,13 +227,13 @@ private _renderDetails(items: IWritingListItem[]):void{
         }
 html+=`<div class="${styles.exploreitem}" style="border-radius: inherit;">
 <div style="position:relative; width:100%; height:100%;">`;
-        if (item.WorkType == "Collection") {
+        if (item.WorkType === "Collection") {
           html += `<img src="${require('../../shared/assets/doc.png')}" class="${styles.exploreBackground2}">`;
         } else {
           html += `<img src="${require('../../shared/assets/page.png')}" class="${styles.exploreBackground2}">`;
         }
         html+=`</div>`;
-        if (item.Triggers != null) {
+        if (item.Triggers !== null) {
           html += `
           <p style="float: right; position: absolute; top: 5%; right: 5%; font-weight: bolder;">!</p>`;
         }
@@ -454,9 +323,9 @@ html+=`<div class="${styles.exploreitem}" style="border-radius: inherit;">
 
     });
 
-    if (this.domElement.querySelector('#WritingListContainer') != null) {
+    if (this.domElement.querySelector('#WritingListContainer') !== null) {
       this.domElement.querySelector('#WritingListContainer')!.innerHTML = html;
-    };
+    }
     this.domElement.querySelectorAll('#Detailsdrop').forEach(button => {
       button.addEventListener('click', this.handleClick);
 
@@ -465,7 +334,7 @@ html+=`<div class="${styles.exploreitem}" style="border-radius: inherit;">
 
   }
 
-  private _renderAllFilters() {
+  private _renderAllFilters():void {
     this._renderGenreListAsync();
     this._renderTriggerListAsync();
     this._renderTagListAsync();
@@ -476,7 +345,7 @@ html+=`<div class="${styles.exploreitem}" style="border-radius: inherit;">
       .then((response) => {
         this._renderGenreList(response.value);
       })
-      .catch(() => { });
+      .catch((e) => {console.log(e)});
   }
 
   private _getGenreListData(): Promise<IGenreList> {
@@ -500,9 +369,9 @@ html+=`<div class="${styles.exploreitem}" style="border-radius: inherit;">
     });
 
     html += '</form>';
-    if (this.domElement.querySelector('#GenreListContainer') != null) {
+    if (this.domElement.querySelector('#GenreListContainer') !== null) {
       this.domElement.querySelector('#GenreListContainer')!.innerHTML = html;
-    };
+    }
   }
 
   private _renderTriggerListAsync(): void {
@@ -534,9 +403,9 @@ html+=`<div class="${styles.exploreitem}" style="border-radius: inherit;">
     });
 
     html += '</form>';
-    if (this.domElement.querySelector('#TriggerListContainer') != null) {
+    if (this.domElement.querySelector('#TriggerListContainer') !== null) {
       this.domElement.querySelector('#TriggerListContainer')!.innerHTML = html;
-    };
+    }
   }
 
   private _renderTagListAsync(): void {
@@ -544,7 +413,7 @@ html+=`<div class="${styles.exploreitem}" style="border-radius: inherit;">
       .then((response) => {
         this._renderTagList(response.value);
       })
-      .catch(() => { });
+      .catch((e)=>{console.log(e)})
   }
 
   private _getTagListData(): Promise<ITagList> {
@@ -567,9 +436,9 @@ html+=`<div class="${styles.exploreitem}" style="border-radius: inherit;">
     });
 
     html += '</form>';
-    if (this.domElement.querySelector('#TagListContainer') != null) {
+    if (this.domElement.querySelector('#TagListContainer') !== null) {
       this.domElement.querySelector('#TagListContainer')!.innerHTML = html;
-    };
+    }
   }
 
 }
