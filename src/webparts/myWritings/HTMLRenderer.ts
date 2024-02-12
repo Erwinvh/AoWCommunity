@@ -1,4 +1,4 @@
-import styles from './TbdContainerWebPart.module.scss';
+import styles from './MyWritingsWebPart.module.scss';
 
 export default class HTMLRenderer{
 

@@ -73,6 +73,14 @@
           "manifest": "./src/webparts/explore/ExploreWebPart.manifest.json"
         }
       ]
+    },
+    "my-writings-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/myWritings/MyWritingsWebPart.js",
+          "manifest": "./src/webparts/myWritings/MyWritingsWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -85,6 +93,7 @@
     "HomeContainerWebPartStrings": "lib/webparts/homeContainer/loc/{locale}.js",
     "TopBarMembersWebPartStrings": "lib/webparts/topBarMembers/loc/{locale}.js",
     "TbdContainerWebPartStrings": "lib/webparts/tbdContainer/loc/{locale}.js",
-    "ExploreWebPartStrings": "lib/webparts/explore/loc/{locale}.js"
+    "ExploreWebPartStrings": "lib/webparts/explore/loc/{locale}.js",
+    "MyWritingsWebPartStrings": "lib/webparts/myWritings/loc/{locale}.js"
   }
 }

@@ -93,7 +93,7 @@ export default class ExploreWebPart extends BaseClientSideWebPart<IExploreWebPar
           <option value="audi">Least feedbacked</option>
         </select>
       </div>
-      <div class="${styles.searchcontainer}" style="float: right;">
+      <div class="${styles.searchContainer}" style="float: right;">
         <form action="/action_page.php">
           <input type="text" placeholder="Search.." name="search">
         </form>

@@ -1,4 +1,4 @@
-import styles from './DocumentFeedbackWebPart.module.scss';
+import styles from '././ExploreWebPart.module.scss';
 
 export default class HTMLRenderer{
 

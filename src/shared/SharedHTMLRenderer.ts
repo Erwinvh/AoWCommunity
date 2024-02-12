@@ -2,6 +2,11 @@ import styles from './shared.module.scss';
 
 export default class HTMLRenderer{
 
+    //Render method to construct the left navigation menu used by logged in members
+    // - Parameter: A string with the a select range of values. 
+    //              The value deremines the active page the screen is on.
+    // - Returns:   A string containing the HTML code for the left navigation menu
+    // - Example:   This method is called on a new webpart for the new page: My feedback, the call for this function would be: renderMemberBar("MyFeedback");
     public renderMemberBar(activeTab: string):string{
         let html: string = `
         <div>
