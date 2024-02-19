@@ -459,7 +459,7 @@ private _renderWritingsList(items: Objects.IWritingListItem[]): void {
           <div class="${styles.griditem} ${styles.exploreitemp}" id="${item.Title}" onclick="">
           <img src="${require('../../shared/assets/poetry.png')}" class="${styles.exploreicon}">`;
         break;
-      case "Script":
+      case "Scripts":
         html += `
           <div class="${styles.griditem} ${styles.exploreitems}" id="${item.Title}" onclick="">
           <img src="${require('../../shared/assets/script.png')}" class="${styles.exploreicon}">`;
@@ -496,7 +496,7 @@ private _renderWritingsList(items: Objects.IWritingListItem[]): void {
       case "Poetry":
         html += `background-color: #77c700;`;
         break;
-      case "Script":
+      case "Scripts":
         html += `background-color: #f0bd24;`;
         break;
       case "Other":

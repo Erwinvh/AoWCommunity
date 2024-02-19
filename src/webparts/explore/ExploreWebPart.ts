@@ -183,6 +183,11 @@ export default class ExploreWebPart extends BaseClientSideWebPart<IExploreWebPar
   // - Returns:   Void
   // - Example:   This method should only be called once after the comment save button has been added to the inner html render.
   private _bindCommentSave(VID: string): void {
+    const old_element = this.domElement.querySelector('#CommentsInputSend');
+    if (old_element && old_element.parentNode) {
+      const new_element = old_element.cloneNode(true);
+      old_element.parentNode.replaceChild(new_element, old_element);
+    }
     this.domElement.querySelector('#CommentsInputSend')?.addEventListener('click', () => {
       this.addCommentItem(VID);
     })
@@ -207,6 +212,11 @@ export default class ExploreWebPart extends BaseClientSideWebPart<IExploreWebPar
   // - Returns:   Void
   // - Example:   This method should only be called once after the formal feedback save button has been added to the inner html render.
   private _bindFormalSave(VID: string): void {
+    const old_element = this.domElement.querySelector('#FormalInputSend');
+    if (old_element && old_element.parentNode) {
+      const new_element = old_element.cloneNode(true);
+      old_element.parentNode.replaceChild(new_element, old_element);
+    }
     this.domElement.querySelector('#FormalInputSend')?.addEventListener('click', () => {
       this.addFormalItem(VID);
     })
@@ -295,17 +305,21 @@ export default class ExploreWebPart extends BaseClientSideWebPart<IExploreWebPar
     const CommenterID = this.context.pageContext.user.displayName;
     const VersionID = VID
 
-    this.PostFormalFeedbackItem(Top, "TopsInputField", VersionID, CommenterID);
-    this.PostFormalFeedbackItem(Tip, "TipsInputField", VersionID, CommenterID);
-    this.PostFormalFeedbackItem(General, "GeneralInputField", VersionID, CommenterID);
-    this.PostFormalFeedbackItem(Nitpick, "NitpicksInputField", VersionID, CommenterID);
+    this.PostFormalFeedbackItem(Top, "TopsInputField", VersionID, CommenterID, "Tops");
+    this.PostFormalFeedbackItem(Tip, "TipsInputField", VersionID, CommenterID, "Tips");
+    this.PostFormalFeedbackItem(General, "GeneralInputField", VersionID, CommenterID, "General");
+    this.PostFormalFeedbackItem(Nitpick, "NitpicksInputField", VersionID, CommenterID, "Nitpicks");
   }
 
   //Post/Add method for a formal feedback items.
-  // - Parameter: VID: string, this is the Version ID of the version.
+  // - Parameter: FieldValue: string, this is the value that will be inserted into the sharepoint if it isnt empty.
+  // - Parameter: FieldID: string, this is the html ID of the field that needs to be reset.
+  // - Parameter: VersionID: string, this is the Version ID of the version.
+  // - Parameter: CommenterID: string, this is the ID or name of the feedbacker
+  // - Parameter: FormalType: string, this is type of the formal feedback, Tops, Tips, Nitpicks and General
   // - Returns:   Void
   // - Example:   contained in the addFormalItem(); function.
-  private PostFormalFeedbackItem(FieldValue:string, FieldID:string, VersionID:string, CommenterID:string):void{
+  private PostFormalFeedbackItem(FieldValue:string, FieldID:string, VersionID:string, CommenterID:string, FormalType: string):void{
     //Checks whether the value is not empty
     if (FieldValue !== "") {
       const siteUrl: string = this.context.pageContext.site.absoluteUrl + "/_api/web/lists/getbytitle('Formal Feedback')/Items"
@@ -317,7 +331,7 @@ export default class ExploreWebPart extends BaseClientSideWebPart<IExploreWebPar
           "VersionID": VersionID,
           "FeedbackerID": CommenterID,
           "Content": FieldValue,
-          "FormalType": "Tops"
+          "FormalType": FormalType
         }
         const spHttpClientOptions: ISPHttpClientOptions = {
           "body": JSON.stringify(itemTopBody)
@@ -694,7 +708,7 @@ export default class ExploreWebPart extends BaseClientSideWebPart<IExploreWebPar
               <div class="${styles.griditem} ${styles.exploreitemp}" id="${item.Title}" onclick="">
               <img src="${require('../../shared/assets/poetry.png')}" class="${styles.exploreicon}">`;
             break;
-          case "Script":
+          case "Scripts":
             html += `
               <div class="${styles.griditem} ${styles.exploreitems}" id="${item.Title}" onclick="">
               <img src="${require('../../shared/assets/script.png')}" class="${styles.exploreicon}">`;
@@ -730,7 +744,7 @@ export default class ExploreWebPart extends BaseClientSideWebPart<IExploreWebPar
           case "Poetry":
             html += `background-color: #77c700;`;
             break;
-          case "Script":
+          case "Scripts":
             html += `background-color: #f0bd24;`;
             break;
           case "Other":
